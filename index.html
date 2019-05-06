@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Mutation testing</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -26,10 +26,395 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Hello world</h1>
-					<h3>Theory and practise</h3>
+					<h1>Mutation testing</h1>
+					<h3>Introduction to mutation testing</h3>
 					<p>
-						<small>Created by <a href="https://jtourvieille.github.io">Jounad Tourvieille</a></small>
+						<small>
+							Presentation available at <a href="https://jtourvieille.github.io/MutationTesting/">https://jtourvieille.github.io/MutationTesting/</a>
+						</small>
+					</p>
+				</section>
+				<section>
+					<p>
+						When deploying a new version of a software...
+					</p>
+					<img src="./fear.gif" width="500px" />
+				</section>
+				<section>
+					<h2>
+						Why this fear?
+					</h2>
+					<p>
+						Probably because ...
+					</p>
+					<ul>
+						<li class="fragment">New features were not tested enough</li>
+						<li class="fragment">An existing part of the application may not work anymore</li>
+					</ul>
+				</section>
+				<section>
+					<h2>
+						How to solve this?
+					</h2>
+					<p>
+						A good way to reassure yourself is to cover your code with tests
+					</p>
+					<p>
+
+					<div style="display: inline-block; vertical-align: middle;">
+						<div style="display: inline-block; vertical-align: middle; margin: 20px;">
+							Tests will avoid this...
+						</div>
+						<div style="display: inline-block; vertical-align: middle;">
+							<img src="./bug correction.gif" width="150px" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>
+						Unit tests advantages
+					</h2>
+					<ul>
+						<li class="fragment">Unit testing can increase confidence in changing and maintaining code in the development process.</li>
+						<li class="fragment">Unit testing always has the ability to find problems in early stages in the development cycle.</li>
+						<li class="fragment">Codes are more reusable, reliable and clean.</li>
+						<li class="fragment">Development becomes faster.</li>
+						<li class="fragment">Easy to automate.</li>
+						<li class="fragment">...</li>
+					</ul>
+				</section>
+				<section>
+					<h2>
+						How to know if your application is safely covered by unit tests?
+					</h2>
+					<p>
+						<small>
+							Only one universal answer:
+						</small>
+					</p>
+					<br />
+					<h3>
+						<span style="color: green;">Code coverage</span>
+					</h3>
+				</section>
+				<section>
+					<h2>
+						What is code coverage?
+					</h2>
+					<div style="position: absolute; width: 15%; height: 37%; right: 200; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); text-align: center;">
+						<p><img src="./wikipedia_icon.png" width="100px" /></p>
+					</div>
+					<p>
+						From Wikipedia:
+					</p>
+					<small>
+						<blockquote>
+							&ldquo;In computer science, test coverage is a measure used to describe the degree to which the source code of a program is executed when a particular test suite runs. A program with high test coverage, measured as a percentage, has had more of its source code executed during testing, which suggests it has a lower chance of containing undetected software bugs compared to a program with low test coverage.&rdquo;
+						</blockquote>
+					</small>
+				</section>
+				<section>
+					<h2>
+						How code coverage is measured?
+					</h2>
+					<div style="position: absolute; width: 15%; height: 39%; right: 200; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); text-align: center;">
+						<p><img src="./stackoverflow.png" width="100px" /></p>
+					</div>
+					<p>
+						From StackOverflow:
+					</p>
+					<small>
+						<blockquote>
+							&ldquo;Code coverage is collected by using a specialized tool to instrument the binaries to add tracing calls and run a full set of automated tests against the instrumented product. A good tool will give you not only the percentage of the code that is executed, but also will allow you to drill into the data and see exactly which lines of code were executed during a particular test.&rdquo;
+						</blockquote>
+					</small>
+				</section>
+				<section>
+					<h2>
+						Deep dive with a sample
+					</h2>
+					<h3>
+						Fizz Buzz
+					</h3>
+					<p>
+						Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”
+					</p>
+				</section>
+				<section>
+					<section>
+						<pre>
+							<code class="hljs" data-trim>
+public class FizzBuzzService
+{
+ public string Play(int upperBound)
+ {
+  string finalOutput = string.Empty;
+  for (int i = 1; i <= upperBound; i++)
+  {
+   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
+   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
+   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   finalOutput += localOutput;
+  }
+  return finalOutput;
+ }
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="hljs" data-trim>
+[TestMethod]
+public void Should_Say1_When_1IsGivenAsInput()
+{
+	// Arrange
+	var fizzBuzz = new FizzBuzzService();
+
+	// Act
+	var output = fizzBuzz.Play(1);
+
+	// Assert
+	Assert.AreEqual("1", output);
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="hljs" data-trim data-line-numbers="3">
+public string Play(int upperBound)
+{
+  string finalOutput = string.Empty;
+  for (int i = 1; i <= upperBound; i++)
+  {
+   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
+   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
+   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   finalOutput += localOutput;
+  }
+  return finalOutput;
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="hljs" data-trim data-line-numbers="3-5">
+public string Play(int upperBound)
+{
+  string finalOutput = string.Empty;
+  for (int i = 1; i <= upperBound; i++)
+  {
+   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
+   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
+   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   finalOutput += localOutput;
+  }
+  return finalOutput;
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="hljs" data-trim data-line-numbers="3-9">
+public string Play(int upperBound)
+{
+  string finalOutput = string.Empty;
+  for (int i = 1; i <= upperBound; i++)
+  {
+   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
+   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
+   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   finalOutput += localOutput;
+  }
+  return finalOutput;
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="hljs" data-trim data-line-numbers="3-5,13-16,6,8-11">
+public string Play(int upperBound)
+{
+  string finalOutput = string.Empty;
+  for (int i = 1; i <= upperBound; i++)
+  {
+   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
+   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
+   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   finalOutput += localOutput;
+  }
+  return finalOutput;
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>
+							Code coverage is <span style="color: green;">100%</span>
+						</p>
+						<img src="./code coverage.png" />
+					</section>
+				</section>
+				<section>
+					<h2>
+						Is code coverage a good metric?
+					</h2>
+					<p>
+						<small>
+							In <strong>my</strong> opinion, code coverage is an important but <strong>limited</strong> metric.
+						</small>
+					</p>
+					<p>
+						<small>
+							A 100% code coverage does not mean your code is 100% safe.
+						</small>
+					</p>
+					<p>
+						<small>
+							Automated end to end tests could make a good complement.
+						</small>
+					</p>
+					<p class="fragment">
+						<small>
+							But also...
+						</small>
+					</p>
+				</section>
+				<section data-background="./mutant.gif">
+					<h2>
+						Mutants!
+					</h2>
+				</section>
+				<section>
+					<h2>
+						What is code mutation?
+					</h2>
+					<div style="position: absolute; width: 15%; height: 32%; right: 200; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); text-align: center;">
+						<p><img src="./wikipedia_icon.png" width="100px" /></p>
+					</div>
+					<p>
+						From Wikipedia:
+					</p>
+					<small>
+						<blockquote>
+							&ldquo;Mutation testing (or mutation analysis or program mutation) is used to design new software tests and evaluate the quality of existing software tests. Mutation testing involves modifying a program in small ways. Each mutated version is called a mutant and tests detect and reject mutants by causing the behavior of the original version to differ from the mutant. This is called killing the mutant. Mutants are based on well-defined mutation operators that either mimic typical programming errors (such as using the wrong operator or variable name) or force the creation of valuable tests (such as dividing each expression by zero).&rdquo;
+						</blockquote>
+					</small>
+				</section>
+				<section>
+					<section>
+						<h2>
+							What is code mutation?
+						</h2>
+						<p>
+							<small>
+								For instance, one mutant of the previous example could replace '<=' by '>'
+							</small>
+						</p>
+						<pre>
+							<code class="hljs" data-trim data-line-numbers="4">
+public string Play(int upperBound)
+{
+  string finalOutput = string.Empty;
+  for (int i = 1; i <= upperBound; i++)
+  {
+   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
+   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
+   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   finalOutput += localOutput;
+  }
+  return finalOutput;
+}
+							</code>
+						</pre>
+						<p>
+							<small>
+								A new code base is generated and every related test are run.
+							</small>
+						</p>
+					</section>
+					<section>
+						<h2>
+						What is code mutation?
+						</h2>
+						<p>
+							<small>
+								If the test fail, then the mutant is killed, everything is fine.
+								<br />
+								If the test pass, then the mutant survives, meaning that a code change does not impact tests. You have to worry in this case.
+							</small>
+						</p>
+						<p>
+							<small>
+								When mutants survive, you can consider that you <strong>can't thrust your code coverage</strong>.
+							</small>
+						</p>
+					</section>
+					<section>
+						<img src="./MutationTestingProcess.png" />
+					</section>
+					<section>
+						<img src="./confidence.png" />
+					</section>
+				</section>
+				<section>
+					<section data-background="./colonel-stryker.jpeg">
+						<h2>
+							Let's do it
+						</h2>
+						<p>
+							We will use <a href="https://stryker-mutator.io/stryker-net/index">Stryker</a>, a mutation testing tools, working on dotnet, Scala and Javascript. This tool is still in beta, but offers great possibilities.
+						</p>
+						<p>
+							<small>
+								<ul>
+									<li>Clone <a href="https://github.com/jtourvieille/MutationTesting/tree/master">this repository</a>.</li>
+									<li>Open the solution.</li>
+									<li>Using Visual studio 2019, go to Tools->Options->Projects and Solutions->.NET Core and check that 'Use previews of the .NET Core SDK' is enabled.</li>
+									<li>Check that the project FizzBuzz.Impl targets the framework .NET Core 3.0.</li>
+									<li>Open a power shell at the solution level.</li>
+									<li>'dotnet new tool-manifest' This should add a .config directory containing a dotnet-tools.json file.</li>
+									<li>'dotnet tool install dotnet-stryker' This should install stryker application</li>
+									<li>Move to the test folder.</li>
+									<li>'dotnet stryker'</li>
+								</ul>
+							</small>
+						</p>
+					</section>
+					<section>
+						<img src="./stryker.png" />
+					</section>
+					<section>
+						<div style="display: inline-block; vertical-align: middle;">
+							<div style="display: inline-block; vertical-align: middle;">
+								<img src="./mutators1.png" />
+							</div>
+							<div style="display: inline-block; vertical-align: middle;">
+								<img src="./mutators2.png" />
+							</div>
+							<br />
+							<div style="display: inline-block; vertical-align: middle;">
+								<img src="./mutators3.png" />
+							</div>
+							<div style="display: inline-block; vertical-align: middle;">
+								<img src="./mutators4.png" />
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h2>
+						Conclusion
+					</h2>
+					<p>
+						Mutation tests provide confidence in code coverage indicator. They provide the opportunity to rely on the code coverage indicator.
+					</p>
+					<p>
+						A drawback is compile/run time for all created mutant.
 					</p>
 				</section>
 			</div>
