@@ -156,9 +156,15 @@ public class FizzBuzzService
   string finalOutput = string.Empty;
   for (int i = 1; i <= upperBound; i++)
   {
-   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
-   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
-   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   string localOutput = i % 3 == 0 ?
+	"Fizz" :
+	string.Empty;
+   localOutput += i % 5 == 0 ?
+	"Buzz" :
+	string.Empty;
+   localOutput += localOutput == string.Empty ?
+	i.ToString() :
+	string.Empty;
    finalOutput += localOutput;
   }
   return finalOutput;
@@ -193,9 +199,15 @@ public string Play(int upperBound)
   string finalOutput = string.Empty;
   for (int i = 1; i <= upperBound; i++)
   {
-   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
-   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
-   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   string localOutput = i % 3 == 0 ?
+	"Fizz" :
+	string.Empty;
+   localOutput += i % 5 == 0 ?
+	"Buzz" :
+	string.Empty;
+   localOutput += localOutput == string.Empty ?
+	i.ToString() :
+	string.Empty;
    finalOutput += localOutput;
   }
   return finalOutput;
@@ -205,15 +217,21 @@ public string Play(int upperBound)
 					</section>
 					<section>
 						<pre>
-							<code class="hljs" data-trim data-line-numbers="3-5">
+							<code class="hljs" data-trim data-line-numbers="3-5,6,8">
 public string Play(int upperBound)
 {
   string finalOutput = string.Empty;
   for (int i = 1; i <= upperBound; i++)
   {
-   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
-   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
-   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   string localOutput = i % 3 == 0 ?
+	"Fizz" :
+	string.Empty;
+   localOutput += i % 5 == 0 ?
+	"Buzz" :
+	string.Empty;
+   localOutput += localOutput == string.Empty ?
+	i.ToString() :
+	string.Empty;
    finalOutput += localOutput;
   }
   return finalOutput;
@@ -223,15 +241,21 @@ public string Play(int upperBound)
 					</section>
 					<section>
 						<pre>
-							<code class="hljs" data-trim data-line-numbers="3-9">
+							<code class="hljs" data-trim data-line-numbers="3-5,6,8,9,11">
 public string Play(int upperBound)
 {
   string finalOutput = string.Empty;
   for (int i = 1; i <= upperBound; i++)
   {
-   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
-   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
-   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   string localOutput = i % 3 == 0 ?
+	"Fizz" :
+	string.Empty;
+   localOutput += i % 5 == 0 ?
+	"Buzz" :
+	string.Empty;
+   localOutput += localOutput == string.Empty ?
+	i.ToString() :
+	string.Empty;
    finalOutput += localOutput;
   }
   return finalOutput;
@@ -241,15 +265,45 @@ public string Play(int upperBound)
 					</section>
 					<section>
 						<pre>
-							<code class="hljs" data-trim data-line-numbers="3-5,13-16,6,8-11">
+							<code class="hljs" data-trim data-line-numbers="3-5,6,8,9,11,12-13">
 public string Play(int upperBound)
 {
   string finalOutput = string.Empty;
   for (int i = 1; i <= upperBound; i++)
   {
-   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
-   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
-   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   string localOutput = i % 3 == 0 ?
+	"Fizz" :
+	string.Empty;
+   localOutput += i % 5 == 0 ?
+	"Buzz" :
+	string.Empty;
+   localOutput += localOutput == string.Empty ?
+	i.ToString() :
+	string.Empty;
+   finalOutput += localOutput;
+  }
+  return finalOutput;
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="hljs" data-trim data-line-numbers="3-5,6,8,9,11,12-13,15-17">
+public string Play(int upperBound)
+{
+  string finalOutput = string.Empty;
+  for (int i = 1; i <= upperBound; i++)
+  {
+   string localOutput = i % 3 == 0 ?
+	"Fizz" :
+	string.Empty;
+   localOutput += i % 5 == 0 ?
+	"Buzz" :
+	string.Empty;
+   localOutput += localOutput == string.Empty ?
+	i.ToString() :
+	string.Empty;
    finalOutput += localOutput;
   }
   return finalOutput;
@@ -259,7 +313,7 @@ public string Play(int upperBound)
 					</section>
 					<section>
 						<p>
-							Code coverage is <span style="color: green;">100%</span>
+							Code coverage is <span style="color: green;">83%</span>
 						</p>
 						<img src="./code coverage.png" />
 					</section>
@@ -327,9 +381,15 @@ public string Play(int upperBound)
   string finalOutput = string.Empty;
   for (int i = 1; i <= upperBound; i++)
   {
-   string localOutput = i % 3 == 0 ? "Fizz" : string.Empty;
-   localOutput += i % 5 == 0 ? "Buzz" : string.Empty;
-   localOutput += localOutput == string.Empty ? i.ToString() : string.Empty;
+   string localOutput = i % 3 == 0 ?
+	"Fizz" :
+	string.Empty;
+   localOutput += i % 5 == 0 ?
+	"Buzz" :
+	string.Empty;
+   localOutput += localOutput == string.Empty ?
+	i.ToString() :
+	string.Empty;
    finalOutput += localOutput;
   }
   return finalOutput;
@@ -355,7 +415,7 @@ public string Play(int upperBound)
 						</p>
 						<p>
 							<small>
-								When mutants survive, you can consider that you <strong>can't thrust your code coverage</strong>.
+								When mutants survive, you can consider that you <strong>can't trust your code coverage</strong>.
 							</small>
 						</p>
 					</section>
@@ -379,11 +439,8 @@ public string Play(int upperBound)
 								<ul>
 									<li>Clone <a href="https://github.com/jtourvieille/MutationTesting/tree/master">this repository</a>.</li>
 									<li>Open the solution.</li>
-									<li>Using Visual studio 2019, go to Tools->Options->Projects and Solutions->.NET Core and check that 'Use previews of the .NET Core SDK' is enabled.</li>
-									<li>Check that the project FizzBuzz.Impl targets the framework .NET Core 3.0.</li>
 									<li>Open a power shell at the solution level.</li>
-									<li>'dotnet new tool-manifest' This should add a .config directory containing a dotnet-tools.json file.</li>
-									<li>'dotnet tool install dotnet-stryker' This should install stryker application</li>
+									<li>'dotnet tool install -g dotnet-stryker' This should install stryker application</li>
 									<li>Move to the test folder.</li>
 									<li>'dotnet stryker'</li>
 								</ul>
