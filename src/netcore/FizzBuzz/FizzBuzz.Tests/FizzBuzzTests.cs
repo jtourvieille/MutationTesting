@@ -19,8 +19,7 @@ namespace FizzBuzz.Tests
             Assert.AreEqual("1", output);
         }
 
-        // Those tests are intentionnaly commented
-
+        #region Hidden
         //[TestMethod]
         //public void Should_Say12_When_2IsGivenAsInput()
         //{
@@ -85,5 +84,6 @@ namespace FizzBuzz.Tests
         //    // Assert
         //    Assert.AreEqual("12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz", output);
         //}
+        #endregion
     }
 }
