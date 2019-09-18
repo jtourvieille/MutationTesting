@@ -147,6 +147,14 @@
 				</section>
 				<section>
 					<section>
+						<h1>
+							Demo
+						</h1>
+						<aside class="notes">
+							Switch to the live demo.
+						</aside>
+					</section>
+					<section>
 						<pre>
 							<code class="hljs" data-trim>
 public class FizzBuzzService
@@ -172,6 +180,10 @@ public class FizzBuzzService
 }
 							</code>
 						</pre>
+						<aside class="notes">
+							The remainder operator % computes the remainder after dividing its left-hand operand by its right-hand operand.
+							5 % 4 => 1
+						</aside>
 					</section>
 					<section>
 						<pre>
@@ -316,6 +328,9 @@ public string Play(int upperBound)
 							Code coverage is <span style="color: green;">83%</span>
 						</p>
 						<img src="./code coverage.png" />
+						<aside>
+							Many projects would like to have this code coverage ratio.
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -327,6 +342,13 @@ public string Play(int upperBound)
 							In <strong>my</strong> opinion, code coverage is an important but <strong>limited</strong> metric.
 						</small>
 					</p>
+					<p>
+						<img src="./CoveragePercentage.jpg" /><br/>
+						<small>
+							In our example, it points out that 17% of the code is <strong>not</strong> covered. But it does not indicates that 83% are well covered.
+						</small>
+					</p>
+					<hr>
 					<p>
 						<small>
 							A 100% code coverage does not mean your code is 100% safe.
@@ -404,7 +426,7 @@ public string Play(int upperBound)
 					</section>
 					<section>
 						<h2>
-						What is code mutation?
+							What is code mutation?
 						</h2>
 						<p>
 							<small>
@@ -421,10 +443,32 @@ public string Play(int upperBound)
 					</section>
 					<section>
 						<img src="./MutationTestingProcess.png" />
+						<aside class="notes">
+							Incomplete mutation table.
+						</aside>
 					</section>
 					<section>
 						<img src="./confidence.png" />
 					</section>
+				</section>
+				<section>
+					<h2>
+						Tools
+					</h2>
+					<p>
+						<div style="display: inline-block; vertical-align: middle;">
+							<div style="display: inline-block; vertical-align: middle;">
+								<img src="./pit-black-150x152.png" style="height:300px;width:300px;" />
+							</div>
+							<div style="display: inline-block; vertical-align: middle">
+								<img src="./strykerman.png" style="height:300px;width:300px;" />
+							</div>
+						</div>
+					</p>
+					<aside class="notes">
+						Pitest => Java and all JVM compatible languages
+						Stryker => js, C#, Scala
+					</aside>
 				</section>
 				<section>
 					<section data-background="./colonel-stryker.jpeg">
