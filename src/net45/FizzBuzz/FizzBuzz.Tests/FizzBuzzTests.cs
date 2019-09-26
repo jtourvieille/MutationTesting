@@ -1,88 +1,45 @@
-﻿using FizzBuzz.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace FizzBuzz.Tests
+﻿namespace FizzBuzz.Tests
 {
+    using FizzBuzz.Impl;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class FizzBuzzTests
     {
-        [TestMethod]
-        public void Should_Say1_When_1IsGivenAsInput()
-        {
-            // Arrange
-            var fizzBuzz = new FizzBuzzService();
-
-            // Act
-            var output = fizzBuzz.Play(1);
-
-            // Assert
-            Assert.AreEqual("1", output);
-        }
-
-        #region Hidden
+        #region Demo 1
         //[TestMethod]
-        //public void Should_Say12_When_2IsGivenAsInput()
+        //public void Should_Say1_When_1IsGivenAsInput()
         //{
         //    // Arrange
         //    var fizzBuzz = new FizzBuzzService();
 
         //    // Act
-        //    var output = fizzBuzz.Play(2);
+        //    var output = fizzBuzz.Play(1);
 
         //    // Assert
-        //    Assert.AreEqual("12", output);
+        //    Assert.AreEqual("1", output);
         //}
+        #endregion
 
-        //[TestMethod]
-        //public void Should_Say12Fizz_When_3IsGivenAsInput()
+        #region Demo 3
+
+        //[DataTestMethod]
+        //[DataRow(1, "1")]
+        //[DataRow(2, "12")]
+        //[DataRow(3, "12Fizz")]
+        //[DataRow(4, "12Fizz4")]
+        //[DataRow(5, "12Fizz4Buzz")]
+        //[DataRow(15, "12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz")]
+        //public void Should_SayX_When_YIsGivenAsInput(int input, string expectedOutput)
         //{
         //    // Arrange
         //    var fizzBuzz = new FizzBuzzService();
 
         //    // Act
-        //    var output = fizzBuzz.Play(3);
+        //    var output = fizzBuzz.Play(input);
 
         //    // Assert
-        //    Assert.AreEqual("12Fizz", output);
-        //}
-
-        //[TestMethod]
-        //public void Should_Say12Fizz4_When_4IsGivenAsInput()
-        //{
-        //    // Arrange
-        //    var fizzBuzz = new FizzBuzzService();
-
-        //    // Act
-        //    var output = fizzBuzz.Play(4);
-
-        //    // Assert
-        //    Assert.AreEqual("12Fizz4", output);
-        //}
-
-        //[TestMethod]
-        //public void Should_Say12Fizz4Buzz_When_5IsGivenAsInput()
-        //{
-        //    // Arrange
-        //    var fizzBuzz = new FizzBuzzService();
-
-        //    // Act
-        //    var output = fizzBuzz.Play(5);
-
-        //    // Assert
-        //    Assert.AreEqual("12Fizz4Buzz", output);
-        //}
-
-        //[TestMethod]
-        //public void Should_Say12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz_When_15IsGivenAsInput()
-        //{
-        //    // Arrange
-        //    var fizzBuzz = new FizzBuzzService();
-
-        //    // Act
-        //    var output = fizzBuzz.Play(15);
-
-        //    // Assert
-        //    Assert.AreEqual("12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz", output);
+        //    Assert.AreEqual(expectedOutput, output);
         //}
         #endregion
     }
