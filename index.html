@@ -12,6 +12,19 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
+		<style>
+			.inline-logo{
+				margin: 0!important;
+				background: none!important;
+				border: none!important;
+				box-shadow: none!important;
+				max-height: 1.5em!important;
+				vertical-align: middle!important;
+			}
+			th, td {
+    			text-align: center!important;
+			}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -152,6 +165,8 @@
 						</h1>
 						<aside class="notes">
 							Switch to the live demo.
+							Sample With Implementation
+							Menu "Test" -> "Analyze Code Coverage" -> "All Tests"
 						</aside>
 					</section>
 					<section>
@@ -472,28 +487,35 @@ public string Play(int upperBound)
 				</section>
 				<section>
 					<section data-background="./colonel-stryker.jpeg">
+					
 						<h2>
-							Let's do it
+							Demo 2
 						</h2>
-						<p>
-							We will use <a href="https://stryker-mutator.io/stryker-net/index">Stryker</a>, a mutation testing tools, working on dotnet, Scala and Javascript. This tool is still in beta, but offers great possibilities.
-						</p>
-						<p>
-							<small>
-								<ul>
-									<li>Clone <a href="https://github.com/jtourvieille/MutationTesting/tree/master">this repository</a>.</li>
-									<li>Open the solution.</li>
-									<li>Open a power shell at the solution level.</li>
-									<li>'dotnet tool install -g dotnet-stryker' This should install stryker application</li>
-									<li>Move to the test folder.</li>
-									<li>'dotnet stryker'</li>
-								</ul>
-							</small>
-						</p>
+						<!-- <h2> -->
+							<!-- Let's do it -->
+						<!-- </h2> -->
+						<!-- <p> -->
+							<!-- We will use <a href="https://stryker-mutator.io/stryker-net/index">Stryker</a>, a mutation testing tools, working on dotnet, Scala and Javascript. This tool is still in beta, but offers great possibilities. -->
+						<!-- </p> -->
+						<!-- <p> -->
+							<!-- <small> -->
+								<!-- <ul> -->
+									<!-- <li>Clone <a href="https://github.com/jtourvieille/MutationTesting/tree/master">this repository</a>.</li> -->
+									<!-- <li>Open the solution.</li> -->
+									<!-- <li>Open a power shell at the solution level.</li> -->
+									<!-- <li>'dotnet tool install -g dotnet-stryker' This should install stryker application</li> -->
+									<!-- <li>Move to the test folder.</li> -->
+									<!-- <li>'dotnet stryker'</li> -->
+								<!-- </ul> -->
+							<!-- </small> -->
+						<!-- </p> -->
+						
 					</section>
-					<section>
-						<img src="./stryker.png" />
+					<section data-background-iframe="mutation-report.html" data-background-interactive data-background="#dddddd">
 					</section>
+					<!-- <section> -->
+						<!-- <img src="./stryker.png" /> -->
+					<!-- </section> -->
 					<section>
 						<div style="display: inline-block; vertical-align: middle;">
 							<div style="display: inline-block; vertical-align: middle;">
@@ -511,20 +533,320 @@ public string Play(int upperBound)
 							</div>
 						</div>
 					</section>
-					<section>
-						<img src="./stryker-report.png" />
-					</section>
+				</section>
+				<!-- <section> -->
+					<!-- <h2> -->
+						<!-- Conclusion -->
+					<!-- </h2> -->
+					<!-- <p> -->
+						<!-- Mutation tests provide confidence in code coverage indicator. They provide the opportunity to rely on the code coverage indicator. -->
+					<!-- </p> -->
+					<!-- <p> -->
+						<!-- A drawback is compile/run time for all created mutant. -->
+					<!-- </p> -->
+				<!-- </section> -->
+				<section>
+					<h2>Experience Feedback</h2>
+					<ul>
+						<li class="fragment">3 months</li>
+						<li class="fragment">1 major application</li>
+						<li class="fragment">7 junior/senior developers</li>
+						<li class="fragment"><img src="./aspnet.png" class="inline-logo"/> 4.7.2 Backend (10 000 lines of C#)<br/>
+							xUnit unit tests (300)&nbsp;<img src="./xunit.png" class="inline-logo"/></li>
+						<li class="fragment">Frontend (25 000 lines of <img src="./JS TS.png" class="inline-logo"/>)<br/>
+							Jest unit tests (4000)&nbsp;<img src="./jest.png" class="inline-logo"/></li>
+					</ul>
+					<aside class="notes">
+							in progress experimentation
+					</aside>
+				</section>
+				<section >
+					<h2>Share concept with team</h2>
+					<ul>
+						<li class="fragment">POC</li>
+						<li class="fragment">Chapter dev</li>
+						<li class="fragment">DOJO</li>
+					</ul>
+					<aside class="notes">
+Nouveau sujet qualité => engouement de l’équipe lors de la présentation
+Pas en mode startup / survie 
+Temps de mettre en place des méthodos qui permettent de faire du code de qualité
+Techlead proposer des pratiques qualité afin de faire monter l'équipe en compétences et garantir un haut niveau de qualité du code
+					</aside>
 				</section>
 				<section>
 					<h2>
-						Conclusion
+						Backend tool setup
 					</h2>
+					<div class="fragment">
+							<pre>
+									<code>dotnet-tool install -g dotnet-stryker</code>
+								</pre>
+								<p><small>https://docs.microsoft.com/fr-fr/dotnet/core/tools/dotnet-tool-install</small></p>
+					</div>
+				</section>
+				<section>
+					<h2>
+						Backend configuration file
+					</h2>
+					<div class="fragment">
+							<pre>
+									<code class="hljs" data-trim>
+{
+	"stryker-config": {
+	"reporters": [
+		"Progress",
+		"ClearText",
+		"html"
+	],
+	"log-level": "info",
+	"timeout-ms": 30000,
+	"max-concurrent-test-runners": 1,
+	"files-to-exclude": [ "./Commands/Mock" ],
+	"excluded-mutations": []
+	}
+}
+			
+									</code>
+								</pre>
+					</div>
+					<aside class="notes">
+							1 fichier de conf / assembly
+					</aside>
+				</section>
+				<section>
+						<h2>
+							Backend script
+						</h2>
+						<div class="fragment">
+								<p><small>Run script from UT folder</small></p>
+								<pre>
+									<code class="hljs" data-trim>
+dotnet-stryker -p PATH_TO_CS_PROJ_TO_MUTATE -s PATH_TO_SLN
+									</code>
+								</pre>
+						</div>
+						<div class="fragment">
+								<p><small>Use absolute paths, relative paths are not supported yet</small></p>
+							</div>
+							<div class="fragment">
+									<p><small>DO specify -p argument for non .NET core projects</small></p>
+								</div>
+						<aside class="notes">
+								BFF .NET
+								Création de la conf => coller une conf
+								Création de la command line => coller cmdline
+								1 Command / assembly
+						</aside>
+					</section>
+				<section>
+					<h2>Frontend tool setup</h2>
+					<div class="fragment">
+							<pre>
+									<code class="hljs" style="white-space: pre-line">npm install i -D @stryker-mutator/core @stryker-mutator/html-reporter @stryker-mutator/typescript @stryker-mutator/jest-runnner</code>
+								</pre>
+					</div>
+					
+					<aside class="notes">
+							FE JS/TS
+							Création de la conf => montrer les fichiers de conf
+							Création de la command line => montrer le package
+							1 / Command => fail => timeout sur le premier run des TU Jest
+
+							FE JS/TS 2eme essai
+Decoupage par dossier, création des conf et des command line
+=> Plus de time out mais arret de la command apres 2 heures de run. 
+
+
+BLABLA on a Azure DevOps avec un pool agent dédié qualité on va le mettre a contribution..
+
+					</aside>
+				</section>
+				<section>
+					<h2>
+						Frontend configuration file
+					</h2>
+					<pre>
+							<code class="hljs" data-trim>
+const jestConfig = require('./jest.config.js');
+module.exports = function(config) {
+  config.set({
+    mutate: [
+      'app/common/**/*.ts',
+      'app/common/**/*.js',
+      '!app/common/**/*.spec.ts',
+      '!app/common/**/*.spec.js',
+      '!app/common/**/*.stories.js',
+      '!**/index*',
+    ],
+    mutator: 'typescript',
+    tsconfigFile: 'tsconfig.json',
+    testRunner: 'jest',
+    coverageAnalysis: 'off',
+    reporters: ['dots', 'html'],
+    htmlReporter: {
+      baseDir: 'stryker/html-reports/common',
+    },
+    jest: {
+      config: {
+        ...jestConfig,
+        coverageReporters: [],
+        testResultsProcessor: null,
+        testMatch: ['**/app/common/**/*.spec.(t|j)s'],
+      },
+      enableFindRelatedTests: true,
+    },
+    files: ['index-specrunner.js', 'html-loader-preprocessor.js', 'app/**/*.*', 'babel.config.js'],
+    maxConcurrentTestRunners: 2,
+    timeoutFactor: 10,
+    timeoutMs: 60000,
+  });
+};				
+							</code>
+						</pre>
+						<aside class="notes">
+mutate => fichiers que l'on va muter
+Surcharge de la conf Jest							
+files => permet de controler le contenu des sandbox
+timeoutFactor & timeoutMs => permet de controler les timeouts lorsque le mutant généré throw ou ne compile pas
+						</aside>
+				</section>
+				<section>
+					<h2>Frontend npm scripts</h2>
+					<div class="fragment">
+							<pre>
+								<code class="hljs" data-trim>
+		{
+		  "stryker:store": "stryker run stryker.store.conf.js",
+		  "stryker:common": "stryker run stryker.common.conf.js",
+		  "stryker:components": "stryker run stryker.components.conf.js",
+		  "stryker:pages": "stryker run stryker.pages.conf.js",
+		}
+								</code>
+							</pre>
+					</div>
+					<div class="fragment">
+						<pre>
+							<code class="hljs">npm run stryker:common</code>
+						</pre>
+					</div>
+					
+				</section>
+				<section>
+						<h2>Automation</h2>
+						<p>TODO: rappel azure devops ce que c'est a quoi ca sert</p>
+						parler tu etc..
+				</section>
+				<section>
+					<section>
+						<h2>Backend Build pipeline</h2>
+						<img src="./build-definition-backend.PNG"/>
+					</section>
+					<section>
+						<h2>Backend Build pipeline</h2>
+						<div class="fragment">
+							<p><small>Inline PowerShell Task to install tool if required</small></p>
+							<pre>
+								<code class="hljs" data-trim style="font-size: 0.8em">
+if (@(dotnet tool list -g | where { $_ -match "dotnet-stryker" }).Length -eq 0) {
+Invoke-Expression -Command "dotnet tool install -g dotnet-stryker"
+}
+								</code>
+							</pre>
+						</div>
+						<div class="fragment">
+							<p><small>Command Line Task to run analysis</small>
+								<pre>
+									<code class="hljs" data-trim style="font-size: 0.8em; white-space: pre-line">
+dotnet-stryker -p "$(Build.SourcesDirectory)\NOA\NOA.CarInsurance\NOA.CarInsurance.csproj" -s "$(Build.SourcesDirectory)\NOA\NOA.sln"
+									</code>
+								</pre>
+							</p>
+						</div>
+						<aside class="notes">
+							Powershell task inline script 
+							Pas de tache Azure Devops => script CLI pour dotnet-stryker
+							
+							=> 1heure pour muter les 10000 lignes de code et jouer les TU associés 
+							- 	Rappel CD sur Azure Devops => créatino d’une release déplouiement + screenshots
+							CD: déploiement du report html sur un srv web accessible aux dev
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Frontend Build pipeline</h2>
+						<img src="./build-definition-frontend.PNG"/>
+					</section>
+					<section>
+						<h2>Frontend build pipeline</h2>
+						<div class="fragment">
+							<p><small>npm task to install tool</small></p>
+							<pre>
+								<code class="hljs">npm ci</code>
+							</pre>
+						</div>
+						<div class="fragment">
+							<p><small>npm task to run analysis</small></p>
+							<pre>
+								<code class="hljs">npm run stryker:common</code>
+							</pre>
+						</div>
+						<aside class="notes">
+								Script npm
+								16h pour muter 22000 lignes de codes et jouer les TU associés  (+4000 TU associés, + nombre de mutants a générés)
+								CD: déploiement des reports sur un server web accessible aux dev
+						</aside>
+					</section>
+				</section>
+				
+
+				<section>
+					<h2>Report analysis</h2>
+					<table>
+						<thead>
+							<tr><th width="50%">Pros</th><th widgt="50%">Cons</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>HTML JS</td><td>No aggregation</td></tr>
+							<tr><td>Intractive report</td><td>No temporal analysis</td></tr>
+							<tr><td>JSON</td><td>No integration with existing reports</td></tr>
+							<tr><td></td><td>1 more weekly team meeting</td></tr>
+						</tbody>
+					</table>
+					
+					<aside class="notes">
+							<i>ici ouvrir les reports</i>
+Analyse est fastidieuse
+1 rituel d’équipe qualité de plus
+N Rapports intéractifs
+Rapport non intégré aux reports existants ( SonarQube)
+Pas de diff temporelle entre les analyses
+					</aside>
+				</section>
+				<section>
+					<h2>Tips</h2>
 					<p>
-						Mutation tests provide confidence in code coverage indicator. They provide the opportunity to rely on the code coverage indicator.
+							Impacts sur les TU
+							=> montrer des TU utilisant des constantes => ils vont passer s’ils utilisent aussi le fichier de constantes
+							=> EN JS / TS => attention a lodash et les syntaxes prenant en parametres des magic strings, -_.has, _.set etc..)
+							Configuration des mutations
+							Présenter comment on modifie les mutations que l’on va demander de faire a stryker
+							Focus sur le code critique => métier
+							Partie front utiliser enableFindRelatedTest permettant de ne jouer que les TU affectés par un mutation
+							
 					</p>
-					<p>
-						A drawback is compile/run time for all created mutant.
-					</p>
+				</section>
+
+				<section>
+					<h2>What's next ?</h2>
+					<ul>
+						<li class="fragment">JSON reports aggregation</li>
+						<li class="fragment">SonarQube integration through plugin</li>
+						<li class="fragment">incremental analysis</li>
+						<li class="fragment">git diff analysis</li>
+						<li class="fragment">Azure DevOps pipeline tasks</li>
+					</ul>
 				</section>
 			</div>
 		</div>
