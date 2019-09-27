@@ -48,6 +48,25 @@
 					</p>
 				</section>
 				<section>
+					<h2>
+						Who are we?
+					</h2>
+					<p>
+						<div style="display: inline-block; vertical-align: middle;">
+							<div style="display: inline-block; vertical-align: middle;">
+								<img src="./jt.jpg" style="height:220px;width:220px;" />
+								<br/>
+								<small>Jounad Tourvieille</small>
+							</div>
+							<div style="display: inline-block; vertical-align: middle">
+								<img src="./gd.jpg" style="height:220px;width:220px;" />
+								<br/>
+								<small>Guillaume Delahaye</small>
+							</div>
+						</div>
+					</p>
+				</section>
+				<section>
 					<p>
 						When deploying a new version of a software...
 					</p>
@@ -146,6 +165,12 @@
 							&ldquo;Code coverage is collected by using a specialized tool to instrument the binaries to add tracing calls and run a full set of automated tests against the instrumented product. A good tool will give you not only the percentage of the code that is executed, but also will allow you to drill into the data and see exactly which lines of code were executed during a particular test.&rdquo;
 						</blockquote>
 					</small>
+					<aside class="notes">
+						Function coverage
+						Statement coverage
+						Branch coverage – Has each branch (also called DD-path) of each control structure (such as in if and case statements) been executed?
+						Condition coverage (or predicate coverage)
+					</aside>
 				</section>
 				<section>
 					<h2>
@@ -155,7 +180,7 @@
 						Fizz Buzz
 					</h3>
 					<p>
-						Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”
+						Write a program that prints the numbers from 1 to x. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”
 					</p>
 				</section>
 				<section>
@@ -487,10 +512,9 @@ public string Play(int upperBound)
 				</section>
 				<section>
 					<section data-background="./colonel-stryker.jpeg">
-					
-						<h2>
+						<h1>
 							Demo 2
-						</h2>
+						</h1>
 						<!-- <h2> -->
 							<!-- Let's do it -->
 						<!-- </h2> -->
@@ -509,9 +533,11 @@ public string Play(int upperBound)
 								<!-- </ul> -->
 							<!-- </small> -->
 						<!-- </p> -->
-						
+						<aside class="notes">
+							Run stryker
+						</aside>
 					</section>
-					<section data-background-iframe="mutation-report.html" data-background-interactive data-background="#dddddd">
+					<section data-background-iframe="mutation-report-1.html" data-background-interactive data-background="#dddddd">
 					</section>
 					<!-- <section> -->
 						<!-- <img src="./stryker.png" /> -->
@@ -532,6 +558,18 @@ public string Play(int upperBound)
 								<img src="./mutators4.png" />
 							</div>
 						</div>
+					</section>
+				</section>
+				<section>
+					<section data-background="./Stryker_Movie.jpg">
+						<h1>
+							Demo 3
+						</h1>
+						<aside class="notes">
+							Full Test + run stryker
+						</aside>
+					</section>
+					<section data-background-iframe="mutation-report-2.html" data-background-interactive data-background="#dddddd">
 					</section>
 				</section>
 				<!-- <section> -->
@@ -733,14 +771,27 @@ timeoutFactor & timeoutMs => permet de controler les timeouts lorsque le mutant 
 					
 				</section>
 				<section>
-						<h2>Automation</h2>
-						<p>TODO: rappel azure devops ce que c'est a quoi ca sert</p>
-						parler tu etc..
+					<section>
+						<h1>Automation</h1>
+					</section>
+					<section>
+						<img src="./azure-1.jpg" />
+					</section>
+					<section>
+						<img src="./azure-2.jpg" />
+					</section>
+					<section>
+						<img src="./azure-3.jpg" />
+					</section>
+					<section>
+						<img src="./azure-4.jpg" />
+					</section>
 				</section>
+				
 				<section>
 					<section>
 						<h2>Backend Build pipeline</h2>
-						<img src="./build-definition-backend.PNG"/>
+						<img src="./build-definition-backend.PNG" style="height:500px"/>
 					</section>
 					<section>
 						<h2>Backend Build pipeline</h2>
@@ -776,7 +827,7 @@ dotnet-stryker -p "$(Build.SourcesDirectory)\NOA\NOA.CarInsurance\NOA.CarInsuran
 				<section>
 					<section>
 						<h2>Frontend Build pipeline</h2>
-						<img src="./build-definition-frontend.PNG"/>
+						<img src="./build-definition-frontend.PNG" style="height:500px"/>
 					</section>
 					<section>
 						<h2>Frontend build pipeline</h2>
@@ -799,30 +850,86 @@ dotnet-stryker -p "$(Build.SourcesDirectory)\NOA\NOA.CarInsurance\NOA.CarInsuran
 						</aside>
 					</section>
 				</section>
-				
-
 				<section>
-					<h2>Report analysis</h2>
-					<table>
-						<thead>
-							<tr><th width="50%">Pros</th><th widgt="50%">Cons</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>HTML JS</td><td>No aggregation</td></tr>
-							<tr><td>Intractive report</td><td>No temporal analysis</td></tr>
-							<tr><td>JSON</td><td>No integration with existing reports</td></tr>
-							<tr><td></td><td>1 more weekly team meeting</td></tr>
-						</tbody>
-					</table>
+					<section data-background="./data_center.jpg">
+						<h2>Analysis</h2>
+						<div style="display: inline-block; vertical-align: middle;">
+							<div style="display: inline-block; vertical-align: middle;padding: 10px">
+								<table>
+									<thead>
+										<tr><th>Backend</th></tr>
+									</thead>
+									<tbody>
+										<tr><td>C#</td></tr>
+										<tr><td>300 Tests</td></tr>
+										<tr><td>4 vcpu 16 Go + SSD</td></tr>
+									</tbody>
+								</table>
+								<br/>
+								<h3>1h</h3>
+							</div>
+							<div style="display: inline-block; vertical-align: middle;padding: 10px">
+								<table>
+									<thead>
+										<tr><th>Frontend</th></tr>
+									</thead>
+									<tbody>
+										<tr><td>Js</td></tr>
+										<tr><td>4500 Tests</td></tr>
+										<tr><td>8 vcpu 32 Go + SSD</td></tr>
+									</tbody>
+								</table>
+								<br/>
+								<h3>11h30</h3>
+							</div>
+						</div>
 					
-					<aside class="notes">
-							<i>ici ouvrir les reports</i>
-Analyse est fastidieuse
-1 rituel d’équipe qualité de plus
-N Rapports intéractifs
-Rapport non intégré aux reports existants ( SonarQube)
-Pas de diff temporelle entre les analyses
-					</aside>
+					
+					
+					
+						
+						
+					</section>
+					<section>
+						<h2>Analysis</h2>
+						<div style="display: inline-block; vertical-align: middle;">
+							<div style="display: inline-block; vertical-align: top;padding: 10px">
+								<table>
+									<thead>
+										<tr><th>Pros</th></tr>
+									</thead>
+									<tbody>
+										<tr><td><small>HTML JS</small></td></tr>
+										<tr><td><small>Interactive report</small></td></tr>
+										<tr><td><small>JSON</small></td></tr>
+									</tbody>
+								</table>
+							</div>
+							<div style="display: inline-block; vertical-align: top;padding: 10px">
+								<table>
+									<thead>
+										<tr><th>Cons</th></tr>
+									</thead>
+									<tbody>
+										<tr><td><small>Analysis time</small></td></tr>
+										<tr><td><small>No aggregation</small></td></tr>
+										<tr><td><small>No temporal analysis</small></td></tr>
+										<tr><td><small>No integration with existing reports</small></td></tr>
+										<tr><td><small>1 more weekly team meeting</small></td></tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						
+						<aside class="notes">
+								<i>ici ouvrir les reports</i>
+	Analyse est fastidieuse
+	1 rituel d’équipe qualité de plus
+	N Rapports intéractifs
+	Rapport non intégré aux reports existants ( SonarQube)
+	Pas de diff temporelle entre les analyses
+						</aside>
+					</section>
 				</section>
 				<section>
 					<h2>Tips</h2>
