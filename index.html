@@ -883,12 +883,6 @@ dotnet-stryker -p "$(Build.SourcesDirectory)\NOA\NOA.CarInsurance\NOA.CarInsuran
 								<h3>11h30</h3>
 							</div>
 						</div>
-					
-					
-					
-					
-						
-						
 					</section>
 					<section>
 						<h2>Analysis</h2>
@@ -932,18 +926,13 @@ dotnet-stryker -p "$(Build.SourcesDirectory)\NOA\NOA.CarInsurance\NOA.CarInsuran
 					</section>
 				</section>
 				<section>
-					<h2>Tips</h2>
-					<p>
-							Impacts sur les TU
-							=> montrer des TU utilisant des constantes => ils vont passer s’ils utilisent aussi le fichier de constantes
-							=> EN JS / TS => attention a lodash et les syntaxes prenant en parametres des magic strings, -_.has, _.set etc..)
-							Configuration des mutations
-							Présenter comment on modifie les mutations que l’on va demander de faire a stryker
-							Focus sur le code critique => métier
-							Partie front utiliser enableFindRelatedTest permettant de ne jouer que les TU affectés par un mutation
-							
-					</p>
-				</section>
+                    <h2>Tips</h2>
+                    <ul>
+                        <li class="fragment">Configure mutations</li>
+                        <li class="fragment">Focus on critical code</li>
+                        <li class="fragment">Split analysis on large code base</li>
+                    </ul>
+                </section>
 
 				<section>
 					<h2>What's next ?</h2>
