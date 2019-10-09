@@ -67,6 +67,19 @@
 					</p>
 				</section>
 				<section>
+					<h2>
+						What will be covered
+					</h2>
+					<ul>
+						<li class="fragment">What is code coverage?</li>
+						<li class="fragment">How is it calculated?</li>
+						<li class="fragment">Code coverage weakness</li>
+						<li class="fragment">Mutation testing</li>
+						<li class="fragment">Full sample</li>
+						<li class="fragment">LOB feedback</li>
+					</ul>
+				</section>
+				<section>
 					<p>
 						When deploying a new version of a software...
 					</p>
@@ -499,9 +512,13 @@ public string Play(int upperBound)
 						<div style="display: inline-block; vertical-align: middle;">
 							<div style="display: inline-block; vertical-align: middle;">
 								<img src="./pit-black-150x152.png" style="height:300px;width:300px;" />
+								<br/>
+								<small>Pitest</small>
 							</div>
 							<div style="display: inline-block; vertical-align: middle">
 								<img src="./strykerman.png" style="height:300px;width:300px;" />
+								<br/>
+								<small>Stryker</small>
 							</div>
 						</div>
 					</p>
@@ -592,7 +609,7 @@ public string Play(int upperBound)
 						<li class="fragment"><img src="./aspnet.png" class="inline-logo"/> 4.7.2 Backend (10 000 lines of C#)<br/>
 							xUnit unit tests (300)&nbsp;<img src="./xunit.png" class="inline-logo"/></li>
 						<li class="fragment">Frontend (25 000 lines of <img src="./JS TS.png" class="inline-logo"/>)<br/>
-							Jest unit tests (4000)&nbsp;<img src="./jest.png" class="inline-logo"/></li>
+							Jest unit tests (4500)&nbsp;<img src="./jest.png" class="inline-logo"/></li>
 					</ul>
 					<aside class="notes">
 							in progress experimentation
@@ -845,14 +862,14 @@ dotnet-stryker -p "$(Build.SourcesDirectory)\NOA\NOA.CarInsurance\NOA.CarInsuran
 						</div>
 						<aside class="notes">
 								Script npm
-								16h pour muter 22000 lignes de codes et jouer les TU associés  (+4000 TU associés, + nombre de mutants a générés)
+								16h pour muter 22000 lignes de codes et jouer les TU associés (+4500 TU associés, + nombre de mutants a générés)
 								CD: déploiement des reports sur un server web accessible aux dev
 						</aside>
 					</section>
 				</section>
 				<section>
 					<section data-background="./data_center.jpg">
-						<h2>Analysis</h2>
+						<h2>Execution time</h2>
 						<div style="display: inline-block; vertical-align: middle;">
 							<div style="display: inline-block; vertical-align: middle;padding: 10px">
 								<table>
@@ -942,6 +959,13 @@ dotnet-stryker -p "$(Build.SourcesDirectory)\NOA\NOA.CarInsurance\NOA.CarInsuran
 						<li class="fragment">incremental analysis</li>
 						<li class="fragment">git diff analysis</li>
 						<li class="fragment">Azure DevOps pipeline tasks</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Should we go?</h2>
+					<ul>
+						<li class="fragment">Target your business/critical code</li>
+						<li class="fragment">Warn on global tooling</li>
 					</ul>
 				</section>
 			</div>
